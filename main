@@ -1,0 +1,264 @@
+import cv2
+from matplotlib import pyplot
+from functs import Population
+fitnesses = []
+generation_number = 10001
+x = 1
+while x < 21:
+ temp_gen = 1
+ prev_fitness = None
+ fitnesses.clear()
+ # num_inds = 5
+ if x == 0:
+ num_inds = 5
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "5"
+ # num_inds = 10
+ elif x == 1:
+ num_inds = 10
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "10"
+ # num_inds = 20
+ elif x == 2:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "20"
+ # num_inds = 40
+ elif x == 3:
+ num_inds = 40
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "40"
+ # num_inds = 60
+ elif x == 4:
+ num_inds = 60
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "60"
+ # num_genes = 15
+ elif x == 5:
+ num_inds = 20
+ num_genes = 15
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "15"
+ # num_genes = 30
+ elif x == 6:
+ num_inds = 20
+ num_genes = 30
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "30"
+ # num_genes = 80
+ elif x == 7:
+ num_inds = 20
+ num_genes = 80
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "80"
+ # num_genes = 120
+ elif x == 8:
+ num_inds = 20
+ num_genes = 120
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "120"
+ # tm_size = 2
+ elif x == 9:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 2
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "2"
+ # tm_size = 8
+ elif (x == 10):
+ num_inds = 20
+ num_genes = 50
+ tm_size = 8
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "8"
+ # tm_size = 16
+ elif (x == 11):
+ num_inds = 20
+ num_genes = 50
+ tm_size = 16
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "16"
+ # frac_elites = 0.04
+ elif x == 12:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.04
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.04"
+ # frac_elites = 0.35
+ elif x == 13:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.35
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.35"
+ # frac_parents = 0.15
+ elif x == 14:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.15
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.15"
+ # frac_parents = 0.3
+ elif x == 15:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.3
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.3"
+ # frac_parents = 0.75
+ elif x == 16:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.75
+ mutation_prob = 0.2
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.75"
+ # mutation_prob = 0.1
+ elif x == 17:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.1
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.1"
+ # mutation_prob = 0.4
+ elif x == 18:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.4
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.4"
+ # mutation_prob = 0.75
+ elif x == 19:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.75
+ mutation_type = "guided"
+ num_generations = 10000
+ dir_name = "0.75"
+ # mutation_type = unguided
+ elif x == 20:
+ num_inds = 20
+ num_genes = 50
+ tm_size = 5
+ frac_elites = 0.2
+ frac_parents = 0.6
+ mutation_prob = 0.2
+ mutation_type = "unguided"
+ num_generations = 10000
+ dir_name = "unguided"
+ pop = Population(num_inds=num_inds, num_genes=num_genes, tm_size=tm_size, 
+frac_elites=frac_elites, frac_parents=frac_parents, 
+mutation_prob=mutation_prob, mutation_type=mutation_type)
+ while temp_gen != generation_number:
+ for a in pop.poplist:
+ a.chromosome.sort(key=lambda x: x.radius, reverse=True)
+ pop.eval_pop()
+ best = pop.sel()
+ print(temp_gen, best.fitness)
+ fitnesses = fitnesses + [best.fitness]
+ prev_best = best.fitness
+ pop.crossover()
+ pop.mut_pop()
+ if temp_gen % 1000 == 0:
+ cv2.imwrite("i/" + dir_name +".png", best.lastimg())
+ temp_gen = temp_gen + 1
+ pyplot.figure()
+ pyplot.plot(fitnesses)
+ pyplot.savefig("f/" + dir_name + ".png")
+ pyplot.figure()
+ pyplot.plot(fitnesses[1000:])
+ pyplot.savefig("f/" + dir_name + ".png")
+ x = x + 
